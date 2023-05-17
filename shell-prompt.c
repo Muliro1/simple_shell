@@ -11,7 +11,7 @@ int prompt(char **av, char **env)
 {
 	char *lineptr = NULL;
 	size_t n = 0;
-	char *argv[] = (NULL, NULL);
+	char *argv[0] = NULL;
 	ssize_t num_char;
 	int i;
 	int status;

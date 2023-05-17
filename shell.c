@@ -1,10 +1,6 @@
 #include "shell.h"
-int main(int ac, char**av, char **env)
+int main(int argc, char **argv, char **envp)
 {
-    if (av == -1) 
-    {
-        prompt(av, env);
-        return (0);
-    }
-    
+	prompt(argv, envp);
+	return (0);
 }
