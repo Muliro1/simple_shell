@@ -1,5 +1,8 @@
 #include "main.h"
-#include <unistd.io>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 int main(int ac, char **argv){
   char *prompt = "($) ";
@@ -21,8 +24,16 @@ int main(int ac, char **argv){
         if (nchars_read == -1){
             return (-1);
         }
+	lineptr_copy = malloc(sizeof(char) * nchars_read);
+	if (lineptr_copy== NULL)
+	{
+		        perror("memory allocation error");
+			return (-1);
+	}
+	copy_str(lineptr, lineptr_copy);
 
-      printf("%s\n", lineptr);
+	printf("%s\n", lineptr);
+	printf("%s\n", lineptr_copy);
 
          
     }
