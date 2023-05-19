@@ -8,7 +8,7 @@
 #include <string.h>
 
 #define MAX_INPUT_SIZE 1024
-#define PROMPT ":) "
+#define PROMPT "--$ "
 /**
  *ssize_t getline(char **lineptr, size_t *n, FILE *stream);
  */
