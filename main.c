@@ -52,7 +52,7 @@ int main(int ac, char **argv){
 	}
 	argv[i] = NULL;
 
-	printf("%s\n", command);
+	exec(argv);
 
          
     }
