@@ -3,12 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+
 int main(int ac, char **argv)
 {
 char *prompt = "($) ";
 char *command = NULL;
 char *command_copy = NULL;
-const char *delim = " \n";
+const char *delim = " ";
 int token_count = 0;
 char *token;
 int i;
@@ -47,7 +48,8 @@ while (1)
 	for (i = 0; token != NULL; i++)
 	{
 		argv[i] = malloc(sizeof(char) * strlen(token));
-		copy_str(argv[i], token);
+	/**	copy_str(argv[i], token);**/
+		strcpy(argv[i], token);
 		token = strtok(NULL, delim);
 	}
 	argv[i] = NULL;
