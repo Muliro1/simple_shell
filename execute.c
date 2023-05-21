@@ -1,12 +1,6 @@
 #include "main.h"
 #include <unistd.h>
 
-/**
- * exec - execute
- * @argv: vector
- * Return: void
- */
-
 void exec(char **argv)
 {
 	char *command = NULL;

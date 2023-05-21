@@ -1,14 +1,14 @@
-#include <stdio.h>
-
-int copy_str(char str[100], char copy_str[100])
+char *copy_str(char *destination, char *source)
 {
-	int i;
+    char *start = destination;
 
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		copy_str[i] = str[i];
-	}
-	copy_str[i] = '\0';
+    while(*source != '\0')
+    {
+        *destination = *source;
+        destination++;
+        source++;
+    }
 
-	return (0);
+    *destination = '\0'; 
+    return start;
 }
