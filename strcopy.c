@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int copy_str(char str[100],char copy_str[100])
+int copy_str(char str[100], char copy_str[100])
 {
 	int i;
 
