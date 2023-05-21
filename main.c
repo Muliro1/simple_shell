@@ -11,7 +11,7 @@ int main(int ac, char **argv)
     size_t n = 0;
     ssize_t nchars_read;
     const char *delim = " \n";
-    int num_tokens = 0;
+    int token_count = 0;
     char *token;
     int i;
 
@@ -46,20 +46,20 @@ int main(int ac, char **argv)
 
         while (token != NULL)
         {
-            num_tokens++;
+            token_count++;
             token = strtok(NULL, delim);
         }
-        num_tokens++;
+        token_count++;
 
         /* Allocate space to hold the array of strings */
-        argv = malloc(sizeof(char *) * num_tokens);
+        argv = malloc(sizeof(char *) * token_count);
 
         /* Store each token in the argv array */
         token = strtok(command_copy, delim);
 
         for (i = 0; token != NULL; i++)
         {
-            argv[i] = malloc(sizeof(char) * strlen(token));
+            argv[i] = malloc(sizeof(char) *my_strlen(token));
             copy_str(argv[i], token);
 
             token = strtok(NULL, delim);

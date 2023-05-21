@@ -1,6 +1,11 @@
 #include "main.h"
 #include <unistd.h>
 
+/**
+ * exec - function
+ * @argv: the argjument
+ */
+
 void exec(char **argv)
 {
 	char *command = NULL;
