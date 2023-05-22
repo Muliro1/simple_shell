@@ -324,7 +324,7 @@ Simple shell 1.0 +
 ***
 ## Contributors :
 
-****Solomon oyoke****
+****Solomon oyoke: https://github.com/2003solomon/****
 
-****Michael Khaemba****
+****Michael Khaemba: https://github.com/Muliro1/****
 
