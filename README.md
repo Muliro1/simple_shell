@@ -1,11 +1,18 @@
+## Important Update
 Every info about our simple shell will be dropped here
+This Project is based on creating a program that looks like the Unix shell
 
-SIMPLE UNIX SHELL shell
-Description page_with_curl
-This is a simple implementation of a UNIX command line interpreter. The shell can interpret and execute command line arguments read from the standard input. the shell read lines from a file or terminal line which is then interpreted and executed if the command is valid
+##
 
-Requirements
-All the files are to be compiled on an Ubuntu 14.04 LTS machine with: gcc -Wall -Werror -Wextra -pedantic *.c 
+## SIMPLE UNIX SHELL shell
+
+<p>This is a simple implementation of a UNIX command line interpreter.</p> <p>The shell can interpret and execute command line arguments read from the standard input.</p> <p>the shell read lines from a file or terminal line which is then interpreted and executed if the command is valid</p>
+<h1>
+Requirements</h1>
+<p>All the files are to be compiled on an Ubuntu 14.04 LTS machine with:</p>
+```
+gcc -Wall -Werror -Wextra -pedantic *.c
+```
 All files ends end with a new line, with no memory leaks
 All code will use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
 All code will be tested using the test files in the test folder.
