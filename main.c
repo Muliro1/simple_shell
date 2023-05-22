@@ -1,8 +1,4 @@
 #include "main.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 
 int main(int ac, char **argv){
   char *prompt = "($) ";
