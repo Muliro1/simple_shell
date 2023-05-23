@@ -1,12 +1,16 @@
 #include "main.h"
 #include <unistd.h>
+#include <stdio.h>
 
 /**
  * exec - function
  * @argv: the argjument
+ * @argc: count.
+ * @envp: env variables
+ * Return: executed..
  */
 
-void exec(char **argv)
+int exec(int argc, char **argv, char *envp[])
 {
 	char *command = NULL;
 
@@ -19,4 +23,6 @@ void exec(char **argv)
 			perror("Error:");
 		};
 	}
+	printf("done");
+	return (0);
 }
