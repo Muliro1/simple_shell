@@ -33,7 +33,7 @@ int prompt(char **env)
       lineptr[numbers_read - 1] = '\0';
     }
 
-    // tokenize input
+    /* tokenize input */
     char *token = strtok(lineptr, " ");
     char *argv[2] = {NULL, NULL};
     int argc = 0;
