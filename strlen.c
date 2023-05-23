@@ -1,7 +1,6 @@
 /**
  * my_strlen - my implementation.
  * @s: str to count
- * Return: length of string.
  */
 
 unsigned int my_strlen(const char *s)

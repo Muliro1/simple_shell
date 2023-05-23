@@ -7,7 +7,7 @@
 
 char *copy_str(char *destination, char *source)
 {
-	char *start = destination;
+/**	char *start = destination;*/
 
 	while (*source != '\0')
 	{
@@ -16,4 +16,5 @@ char *copy_str(char *destination, char *source)
 		source++;
 	}
 	*destination = '\0';
+	return (0);
 }

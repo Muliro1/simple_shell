@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdio.h>
 
-int main(int ac, char **argv, char *envp[])
+int main(int ac, char **argv)
 {
     char *prompt = "$ ";
     char *command = NULL, *command_copy = NULL;
@@ -14,8 +14,9 @@ int main(int ac, char **argv, char *envp[])
     int token_count = 0;
     char *token;
     int i;
-    ac = 0;
 
+    /* declaring void variables */
+    (void)ac;
 
     /* Create a loop for the shell's prompt */
     while (1)
@@ -25,18 +26,21 @@ int main(int ac, char **argv, char *envp[])
         /* check if the getline function failed or reached EOF or user use CTRL + D */
         if (nchars_read == -1)
         {
+            printf("Exiting shell....\n");
             return (-1);
         }
 
-        /* allocate space for a copy of the command */
+        /* allocate space for a copy of the lineptr */
         command_copy = malloc(sizeof(char) * nchars_read);
         if (command_copy == NULL)
         {
             perror("tsh: memory allocation error");
             return (-1);
         }
+        /* copy lineptr to lineptr_copy */
         copy_str(command_copy, command);
 
+        /********** split the string (lineptr) into an array of words ********/
         /* calculate the total number of tokens */
         token = strtok(command, delim);
 
@@ -44,13 +48,12 @@ int main(int ac, char **argv, char *envp[])
         {
             token_count++;
             token = strtok(NULL, delim);
-	    ac++;
         }
         token_count++;
 
         /* Allocate space to hold the array of strings */
         argv = malloc(sizeof(char *) * token_count);
- 
+
         /* Store each token in the argv array */
         token = strtok(command_copy, delim);
 
@@ -64,7 +67,7 @@ int main(int ac, char **argv, char *envp[])
         argv[i] = NULL;
 
         /* execute the command */
-        exec(ac, argv, envp);
+        exec(argv);
     }
 
     /* free up allocated memory */
@@ -72,4 +75,4 @@ int main(int ac, char **argv, char *envp[])
     free(command);
 
     return (0);
-}  
+}

@@ -6,8 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 
-int exec(int argc, char **argv, char *envp[]);
+void exec(char **argv);
 char *copy_str(char *destination, char *source);
 unsigned int my_strlen(const char *s);
-char *get_path(char *command);
 #endif
