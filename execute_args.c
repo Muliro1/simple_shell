@@ -28,7 +28,7 @@ int execute_args(char **args)
 		return (-1);
 	}
 	/* find if the command is a builtin */
-	for (; i < my_size(builtin_func_list) / my_size(char *); i++)
+	for (; i < sizeof(builtin_func_list) / sizeof(char *); i++)
 	{
 		/* if there is a match execute the builtin command */
 		if (strcmp(args[0], builtin_func_list[i]) == 0)
