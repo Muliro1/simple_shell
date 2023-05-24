@@ -32,9 +32,9 @@ int new_process(char **args);
 char *read_stream(void);
 
 /*---Builtin func---*/
-int own_cd(char **args);
+int cd(char **args);
 int own_exit(char **args);
-int own_env(char **args);
-int own_help(char **args);
+int env(char **args);
+int assist(char **args);
 
 #endif

@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * own_help - print help
+ * assist - print help
  * @args: arguments
  *
  * Return: 1 on success, 0 otherwise
  */
-int own_help(char **args)
+int assist(char **args)
 {
 	char *builtin_func_list[] = {
 		"cd",
