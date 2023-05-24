@@ -12,7 +12,7 @@
 #define TOK_DELIM " \t\r\n\a\""
 extern char **environ;
 
-#define my_sizeof(type) (char *)(&type + 1) - (char *)(&type)
+#define my_sizeof(type) ((char *)(&type + 1) - (char *)(&type))
 int main(void);
 
 /*---PROTOTYPES---*/
