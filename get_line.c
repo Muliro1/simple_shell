@@ -24,5 +24,6 @@ char *read_line(void)
 			exit(EXIT_FAILURE);
 		}
 	}
+
 	return (line);
 }
