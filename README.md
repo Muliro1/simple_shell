@@ -1,155 +1,333 @@
 
-## Simple_shell Project
+# SIMPLE UNIX SHELL :PROJECT
 
-This is a project created by [Abeeb Raheem](https://github.com/belovetech) and [Ogunbanjo Nimota Busayo](https://github.com/Nimbusshub). This project recreates the shell which is the Linux command line interpreter in its simplest form. It provides an interface between the user and the kernel and executes programs.
+## Description :page_with_curl:
 
-The "Simple_shell" is a program that can be compiled and launched from the command line, where its main function is to execute commands read from the standard input. It contains some of the basic features and functions found in the various shell programs like Kernel commands and builtin commands.
+This is a simple implementation of a UNIX command line interpreter. The shell can interpret and execute command line arguments read from the standard input. the shell read lines from a file or terminal line which is then interpreted and executed if the command is valid
 
-## Quick Start
+## Requirements
 
-1. Git clone this respository to your local directory.
+- All the files are to be compiled on an Ubuntu 20.04 LTS machine with:
+  `gcc -Wall -Werror -Wextra -pedantic *.c `
+- All files ends end with a new line, with no memory leaks
+- All code will use the Betty style. It will be checked using `betty-style.pl` and `betty-doc.pl`
+- All code will be tested using the test files in the test folder.
+- The simple shell supports most shell commands, such as `cat`, `pwd`,` ls -la` and more.
 
-       $ git clone https://github.com/belovetech/simple_shell.git
-  
-2. Compile the program.
+## Return Value :
 
-       $ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
-       
-3. Now execute the shell.
-      
-       $ ./hsh
-       
-## Builtin Commands
+The shell returns a value of 0 if the command is valid and the command is executed successfully.
 
-This shell supports the next builtin commands:
+## Output :file_folder:
 
-    cd - change directory
+- The program must have the exact same output as `sh (/bin/sh)` as well as the exact same error output.
+- The only difference is when you print an error, the name of the program must be equivalent to the `argv[0]`
 
-    env - list the current environment variables
+## Usage
+## list of fucntions and system calls used
 
-    exit - exit the shell
-    
-    help - show help for a builtin command
-    
-    pwd - Print the absolute pathname of the current working directory
-    
-    unsetenv - Remove an environment variable
+```
+- access (man 2 access)
+- chdir (man 2 chdir)
+- close (man 2 close)
+- closedir (man 3 closedir)
+- execve (man 2 execve)
+- exit (man 3 exit)
+- _exit (man 2 _exit)
+- fflush (man 3 fflush)
+- fork (man 2 fork)
+- free (man 3 free)
+- getcwd (man 3 getcwd)
+- getline (man 3 getline)
+- isatty (man 3 isatty)
+- kill (man 2 kill)
+- malloc (man 3 malloc)
+- open (man 2 open)
+- opendir (man 3 opendir)
+- perror (man 3 perror)
+- read (man 2 read)
+- readdir (man 3 readdir)
+- signal (man 2 signal)
+- stat (__xstat) (man 2 stat)
+- lstat (__lxstat) (man 2 lstat)
+- fstat (__fxstat) (man 2 fstat)
+- strtok (man 3 strtok)
+- wait (man 2 wait)
+- waitpid (man 2 waitpid)
+- wait3 (man 2 wait3)
+- wait4 (man 2 wait4)
+- write (man 2 write)
 
-## Delimit and comment commands
+```
+## Compilation
+The shell will be compiled this way:
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
 
-	; -  The semicolon. command separator that allows to run a command on a single line placing the semicolon between
-       each command.
-	
-	# - The command number. Allows a word beginning with # and all remaining characters on that line to be ignored.
+## Testing
+The shell works like this in interactive mode:
 
-## Manual
+```
+$ ./hsh
+ ($) /bin/ls
+ hsh main.c shell.c
+ ($)
+ ($) exit
+$
 
-To see the manual run:
+```
+But also in non-interactive mode:
 
-    $ man ./man_1_simple_shell
-    
-Example:
-    	
-	man(1)                                  Manual page for Simple_Shell           			man(1)                                
+```
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+ /bin/ls
+ /bin/ls
+$
+$ cat test_ls_2 | ./hsh
+ hsh main.c shell.c test_ls_2
+ hsh main.c shell.c test_ls_2
+$
+```
+## Mandatory Tasks
 
-	NAME
-       	Simple_Shell - Command language interpreter
+### 0. Betty would be proud
 
-	SYNOPSIS
-       	./hsh
+Write a beautiful code that passes the Betty checks
 
-	DESCRIPTION
-       	Command language interpreter that executes commands read from the standard input or from a file.
+### 1. Simple shell 0.1
 
-	INVOCATION
-       	An  interactive  shell is one started without non-option arguments, just running ./hsh. 
-	Otherwise, when is started non-interactively, to run a shell script, for example, the 
-	shell reads and execute the next command echo "pwd" | ./hsh.
-	
-							.  .  .
+Write a UNIX command line interpreter.
 
+Usage: simple_shell
+Your Shell should:
 
-## Files
+Display a prompt and wait for the user to type a command. A command line always ends with a new line.
+The prompt is displayed again each time a command has been executed.
+The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+The command lines are made only of one word. No arguments will be passed to programs.
+If an executable cannot be found, print an error message and display the prompt again.
+Handle errors.
+You have to handle the “end of file” condition (Ctrl+D)
+You don’t have to:
 
-Brief description of every file in this repository.
-	
-| File | Description |
-| ------------- | ------------- |
-| _atoi.c | function that gets sign and numbers of string |
-| _calloc.c | function that allocates memory for an array |
-| _change.c | functions that change the OLDPWD and PWD environment variables |
-| _display_help.c | functions that reads all builtins text files and prints it to POSIX stdout |
-| _envir.c | functions to print the environment variables and create a copy of env |
-| _errors.c | functions with the error message for each builtin |
-| _forky.c | program that creates process and execute |
-| _gethome.c | funtion to get the environment variable HOME |
-| _getline.c | functions to read what the user writes |
-| _iscd.c | functions to change the current directory of the process. |
-| _isexit.c | functions that finds if line input is exit therefore process termination |
-| _ishelp.c | functions to print the help of each builtin |
-| _noargv.c | function to give shell form without filename as input |
-| _realloc.c | function to change the size and copy the content |
-| _realloc2.c | function to change the size and copy the content special case |
-| _signal.c | function to handle SIGINT signal |
-| _str_concat.c | function to create an array using malloc |
-| _strlen.c | function that returns the length of a string |
-| _unsetenv.c | functions to remove an environment variable |
-| _strtoky.c | functions to cut a string into tokens depending of the delimit|
-| _writerr.c | functions to print the error for each builtin |
-| _yesargv.c | function to give shell form with filename as input |
-| checkbin.c | functions to check if commands exist in the path |
-| free_grid.c | function to free a matrix |
-| man_1_simple_shell | manual of simple_shell |
-| parsing.c | functions that create an array of pointers depending of the delimit characters |
-| shell.h | header file with all thr function prototypes |
-| startshell.c | main function that stars the shell (shell skeleton) |
+use the PATH
+implement built-ins
+handle special characters : ``", ', `, \, *, &, #``
+be able to move the cursor
+handle commands with arguments
+execve will be the core part of your Shell, don’t forget to pass the environ to it…
 
-## Examples
-Some examples for builtins after execute ./hsh
+### 3. Simple shell 0.3
 
-cd:
+Simple shell 0.2 +
 
-	#cisfun$ pwd
-	/home/vagrant/simple_shell
-	#cisfun$ cd
-	#cisfun$ pwd
-	/home/vagrant
-	#cisfun$
-	
-cd error:
+Handle the PATH
+fork must not be called if the command doesn’t exist
 
-	#cisfun$ cd hola
-	./hsh: 1: cd: can't cd to hola
-	#cisfun$
+### 4. Simple shell 0.4
 
-exit:
+Simple shell 0.3 +
 
-	#cisfun$ exit 123
-	vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$ echo $?
-	123
-	
-exit error:
+Implement the exit built-in, that exits the shell
+Usage: exit
+You don’t have to handle any argument to the built-in exit
 
-	#cisfun$ exit hola
-	./hsh: 2: exit: Illegal number: hola
-	#cisfun$
+### 5. Simple shell 1.0
 
-help:
+Simple shell 0.4 +
 
-	#cisfun$ help exit
-	exit: exit [n]
-    	Exit the shell.
+Implement the env built-in, that prints the current environment
 
-    	Exits the shell with a status of N.  If N is omitted, the exit status
-    	is that of the last command executed.
-	#cisfun$
+****end of mandatory****
+## Advanced Tasks
 
-help error:
+### 6. Simple shell 0.1.1
 
-	#cisfun$ help hola
-	./hsh: 4: help: no help topics match 'hola'. Try 'help help' or 'man -k 'hola' or info 'hola'
-	#cisfun$
+Simple shell 0.1 +
+***
+- Write your own ``getline`` function
+- Use a buffer to read many chars at once and call the least possible the read system call
+- You will need to use ``static`` variables
+- You are not allowed to use ``getline``
+***
+You don't have to:
 
+- be able to move the cursor
+
+### 7. Simple shell 0.2.1
+
+Simple shell 0.2 +
+
+- You are not allowed to use ``strtok``
+
+### 8. Simple shell 0.4.1
+Simple shell 0.4 +
+***
+- handles arguments for a built-in ``exit``
+- Usage: ``exit status``, where ``status`` is an integer used to exit the shell
+***
+```
+julien@ubuntu:~/shell$ ./shell_0.4.1
+$ exit 98
+julien@ubuntu:~/shell$ echo $?
+98
+julien@ubuntu:~/shell$
+
+```
+### 9. setenv, unsetenv
+Simple shell 1.0 +
+
+Implement the ``setenv`` and ``unsetenv`` builtin commands
+***
+- ``setenv``
+	- initialize a new environment variable, or modify an existing one
+	- Command syntax: ``setenv VARIABLE VALUE``
+	- Should print something on stderr on failure
+- ``unsetenv``
+	- Remove an environment variable
+	- Command syntax: ``unsetenv VARIABLE``
+	- Should print something on stderr on failure
+***
+
+### 10. cd
+Simple sell 1.0 +
+
+Implement the builtin command ``cd``:
+***
+- Changes the current directory of the process
+- Command syntax: ``cd [DIRECTORY]``
+- If no argument is given to ``cd`` the command must be interpreted like ``cd $HOME``
+- You have to handle the command ``cd -``
+- You have to update the environment variable ``PWD`` when you change directory
+***
+``man chdir``, ``man getcwd``
+
+### 11. ``;``
+
+Simple shell 1.0 +
+***
+- Handle the commands separator ``;``
+***
+```
+alex@~$ ls /var ; ls /var
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+alex@~$ ls /hbtn ; ls /var
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+alex@~$ ls /var ; ls /hbtn
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+ls: cannot access /hbtn: No such file or directory
+alex@~$ ls /var ; ls /hbtn ; ls /var ; ls /var
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+alex@~$
+```
+### 12. ``&&`` and ``||``
+
+Simple shell 1.0 +
+***
+- Handle the ``&&`` and ``||`` shell logical operators
+***
+```
+alex@~$ ls /var && ls /var
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+alex@~$ ls /hbtn && ls /var
+ls: cannot access /hbtn: No such file or directory
+alex@~$ ls /var && ls /var && ls /var && ls /hbtn
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+ls: cannot access /hbtn: No such file or directory
+alex@~$ ls /var && ls /var && ls /var && ls /hbtn && ls /hbtn
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+ls: cannot access /hbtn: No such file or directory
+alex@~$
+alex@~$ ls /var || ls /var
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+alex@~$ ls /hbtn || ls /var
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+alex@~$ ls /hbtn || ls /hbtn || ls /hbtn || ls /var
+ls: cannot access /hbtn: No such file or directory
+ls: cannot access /hbtn: No such file or directory
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+alex@~$ ls /hbtn || ls /hbtn || ls /hbtn || ls /var || ls /var
+ls: cannot access /hbtn: No such file or directory
+ls: cannot access /hbtn: No such file or directory
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+alex@~$
+```
+### 13. alias
+
+Simple shell 1.0 +
+***
+- Implement the alias builtin command
+- Usage: ``alias [name[='value'] ...]``
+	- ``alias``: Prints a list of all aliases, one per line, in the form ``name='value'``
+	- ``alias name [name2 ...]``: Prints the aliases ``name``, ``name2``, etc 1 per line, in the form ``name='value'``
+	- ``alias name='value' [...]``: Defines an alias for each ``name`` whose ``value`` is given. If ``name`` is already an alias, replaces its value with ``value``
+***
+
+### 14. Variables
+
+Simple shell 1.0 +
+***
+- Handle variables replacement
+- Handle the ``$?`` variable
+- Handle the ``$$`` variable
+***
+```
+julien@ubuntu:~/shell$ ./hsh
+$ ls /var
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  snap  spool  tmp
+$ echo $?
+0
+$ echo $$
+5104
+$ echo $PATH
+/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+$ exit 
+julien@ubuntu:~/shell$ 
+```
+
+### 15. Comments
+
+Simple shell 1.0 +
+
+Handle comments (``#``)
+```
+julien@ubuntu:~/shell$ sh
+$ echo $$ # ls -la
+5114
+$ exit
+julien@ubuntu:~/shell$ 
+```
+
+### 16. File as input
+
+Simple shell 1.0 +
+***
+- Usage: ``simple_shell [filename]``
+- Your shell can take a file as a command line argument
+- The file contains all the commands that your shell should run before exiting
+- The file should contain one command per line
+- In this mode, the shell should not print a prompt and should not read from stdin
+***
+## Contributors :
+
+****Michael Khaemba****
+
+****Solomon Oyoke****
 ## Authors 
- Abeeb Raheem and Ogunbanjo Nimota Busayo
+ Michael Khaemba and Solomon Oyoke
 
