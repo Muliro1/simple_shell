@@ -15,9 +15,9 @@ int execute_args(char **args)
 		"exit"
 	};
 	int (*builtin_func[])(char **) = {
-		&own_cd,
-		&own_env,
-		&own_help,
+		&cd,
+		&env,
+		&assist,
 		&own_exit
 	};
 	long unsigned int i = 0;
