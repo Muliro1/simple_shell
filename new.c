@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * new_process - create a new process

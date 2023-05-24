@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * execute_args - map if command is a builtin or a process

@@ -1,19 +1,18 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * shell_interactive - UNIX command line interpreter
+ * shell_no_interactive - unix command line interpreter
  *
  * Return: void
  */
-void shell_interactive(void)
+void shell_no_interactive(void)
 {
 	char *line;
 	char **args;
 	int status = -1;
 
 	do {
-		printf("($) "); /* print prompt symbol */
-		line = read_line(); /* read line from stdin */
+		line = read_stream();
 		args = split_line(line); /* tokenize line */
 		status = execute_args(args);
 		/* avoid memory leaks */
