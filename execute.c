@@ -20,7 +20,7 @@ int execute_args(char **args)
 		&assist,
 		&own_exit
 	};
-	long unsigned int i = 0;
+	unsigned long int i = 0;
 
 	if (args[0] == NULL)
 	{
