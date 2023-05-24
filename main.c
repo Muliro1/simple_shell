@@ -1,4 +1,8 @@
-#include "shell.h"
+#include "main.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 /**
  * main - function that checks if our shell is called
