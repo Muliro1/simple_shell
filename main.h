@@ -1,5 +1,5 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef MAIN_H
+#define MAIN_H
 
 /*---LIBRARIES---*/
 #include <stdio.h>
@@ -12,7 +12,7 @@
 #define TOK_DELIM " \t\r\n\a\""
 extern char **environ;
 
-#define my_sizeof(type) ((char *)(&type + 1) - (char *)(&type))
+#define my_sizeof(type) (char *)(&type + 1) - (char *)(&type)
 int main(void);
 
 /*---PROTOTYPES---*/
