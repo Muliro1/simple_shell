@@ -20,7 +20,7 @@ char *read_line(void)
 		else
 		{
 			free(line); /* avoid memory leaks when getline fails */
-			perror("error while reading the line from stdin");
+			perror("error while reading the line from stdin\n");
 			exit(EXIT_FAILURE);
 		}
 	}
